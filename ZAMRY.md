@@ -1,3 +1,3 @@
-Zamry Lufar 2002
+Zamry Lufar @gmailcom
 
 
