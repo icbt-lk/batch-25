@@ -1,0 +1,63 @@
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Install the latest PowerShell for new features and improvements! https://aka.ms/PSWindows
+
+PS C:\Users\ZAMRY\Desktop\New folder> git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        Git code.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+PS C:\Users\ZAMRY\Desktop\New folder> git add .
+PS C:\Users\ZAMRY\Desktop\New folder> git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   Git code.txt
+
+PS C:\Users\ZAMRY\Desktop\New folder> git commit -m Git code
+error: pathspec 'code' did not match any file(s) known to git
+PS C:\Users\ZAMRY\Desktop\New folder> git commit -m Git code.txt
+error: pathspec 'code.txt' did not match any file(s) known to git
+PS C:\Users\ZAMRY\Desktop\New folder> git commit -m git
+[main 9abe4b9] git
+ 1 file changed, 40 insertions(+)
+ create mode 100644 Git code.txt
+PS C:\Users\ZAMRY\Desktop\New folder> git push -u origin master
+error: src refspec master does not match any
+error: failed to push some refs to 'https://github.com/Zamry2002/batch-25.git'
+PS C:\Users\ZAMRY\Desktop\New folder> git push -u origin main
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 1.15 KiB | 1.15 MiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/Zamry2002/batch-25.git
+   ed609df..9abe4b9  main -> main
+branch 'main' set up to track 'origin/main'.
+PS C:\Users\ZAMRY\Desktop\New folder> git log
+commit 9abe4b9cfaadc1e0028e4bf5ff88bc0a2feab4bd (HEAD -> main, origin/main)
+Author: Zamry2002 <119009799+Zamry2002@users.noreply.github.com>
+Date:   Sun Nov 27 11:56:13 2022 +0530
+
+    git
+
+commit ed609dfc8aa99eb1681e1b334a8e0e934f397e06
+Author: Zamry2002 <119009799+Zamry2002@users.noreply.github.com>
+Date:   Sun Nov 27 11:38:32 2022 +0530
+
+    ZAMRY
+
+commit 5ce4356103190b3f3c0c46df4369fcb1a1f125b8
+Author: icbt-lec <107345642+icbt-lec@users.noreply.github.com>
+Date:   Sun Nov 27 11:23:59 2022 +0530
+
+    Create Readme.md
+PS C:\Users\ZAMRY\Desktop\New folder>
