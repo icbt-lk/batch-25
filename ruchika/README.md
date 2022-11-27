@@ -1,2 +1,2 @@
-Ruchika
+Ruchika Pramodya
 
