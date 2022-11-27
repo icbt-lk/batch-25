@@ -1,0 +1,40 @@
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Install the latest PowerShell for new features and improvements! https://aka.ms/PSWindows
+
+PS C:\Users\ZAMRY\Desktop\New folder> git add .
+PS C:\Users\ZAMRY\Desktop\New folder> git commit -m ZAMRY
+[main ed609df] ZAMRY
+ 3 files changed, 2 insertions(+), 1 deletion(-)
+ delete mode 100644 README.md
+ create mode 100644 ZAMRY.md
+ create mode 100644 test.txt
+PS C:\Users\ZAMRY\Desktop\New folder> git push -u origin master
+error: src refspec master does not match any
+error: failed to push some refs to 'https://github.com/Zamry2002/batch-25.git'
+PS C:\Users\ZAMRY\Desktop\New folder> git status
+On branch main
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+PS C:\Users\ZAMRY\Desktop\New folder> git push -u origin main
+fatal: helper error (-1): User cancelled dialog.
+Username for 'https://github.com': Zamry2002
+Password for 'https://Zamry2002@github.com':
+remote: Support for password authentication was removed on August 13, 2021.
+remote: Please see https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories#cloning-with-https-urls for information on currently recommended modes of authentication.
+fatal: Authentication failed for 'https://github.com/Zamry2002/batch-25.git/'
+PS C:\Users\ZAMRY\Desktop\New folder> git push -u origin main
+info: please complete authentication in your browser...
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (4/4), 310 bytes | 310.00 KiB/s, done.
+Total 4 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/Zamry2002/batch-25.git
+   5ce4356..ed609df  main -> main
+branch 'main' set up to track 'origin/main'.
+PS C:\Users\ZAMRY\Desktop\New folder>
