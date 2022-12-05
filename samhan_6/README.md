@@ -1,3 +1,3 @@
 #SAMHAN SHUHAIB
 
-Hello World
+print("Hello World");
