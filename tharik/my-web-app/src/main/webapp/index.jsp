@@ -23,7 +23,12 @@
     <body>
         <h1>
             <%
-            out.print(Util.getGreeting("George"));
+               String firstName = request.getParameter("firstname");
+                if (firstName != null) {
+                    out.print(Util.getGreeting(firstName));
+                }
+                
+            
             %>
         </h1>
         

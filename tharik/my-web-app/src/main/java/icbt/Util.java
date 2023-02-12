@@ -23,4 +23,11 @@ public class Util {
         
         return students;
     }
+    
+    public static boolean authenticate(String username, String password) {
+        if (username == null && password == null) {
+           return false;
+        }
+        return username.equals("icbt") && password.equals("icbt123");
+    }
 }
