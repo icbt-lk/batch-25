@@ -18,7 +18,34 @@
         String password = request.getParameter("password");
         
          if (!Util.authenticate(username, password)) {
-             response.sendRedirect("login.jsp");
+            boolean validLogin = false;
+            Cookie[] cookies =request.getCookies();
+            for(Cookie cookie : cookies) {
+                if (cookie.getName().equals("session-id")) {
+                    String sesId = cookie.getValue();
+                    
+                    if (session.getAttribute(sesId) == null) {
+                        break;
+                    } 
+                    
+                    username = session.getAttribute(sesId).toString();
+                    if (username != null) {
+                        validLogin = true;
+                        break;
+                    }
+                    
+                }
+            }
+            
+            if (!validLogin) {
+                response.sendRedirect("login.jsp");
+            }
+         } else {
+             //Create Session and Cookie
+             String sessionId = "123";
+             Cookie cookie = new Cookie("session-id", sessionId);
+             session.setAttribute(sessionId, username);
+             response.addCookie(cookie);
          }
         
         %>
