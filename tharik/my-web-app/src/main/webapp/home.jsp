@@ -4,6 +4,7 @@
     Author     : hnd
 --%>
 
+<%@page import="java.util.UUID"%>
 <%@page import="icbt.Util"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -20,20 +21,22 @@
          if (!Util.authenticate(username, password)) {
             boolean validLogin = false;
             Cookie[] cookies =request.getCookies();
+            
             for(Cookie cookie : cookies) {
                 if (cookie.getName().equals("session-id")) {
                     String sesId = cookie.getValue();
                     
-                    if (session.getAttribute(sesId) == null) {
+                    Object sessionVal = session.getAttribute(sesId);
+                    if (sessionVal == null) {
                         break;
                     } 
                     
-                    username = session.getAttribute(sesId).toString();
+                    username = sessionVal.toString();
                     if (username != null) {
                         validLogin = true;
                         break;
                     }
-                    
+    
                 }
             }
             
@@ -42,7 +45,7 @@
             }
          } else {
              //Create Session and Cookie
-             String sessionId = "123";
+             String sessionId = UUID.randomUUID().toString().replace("-", "");
              Cookie cookie = new Cookie("session-id", sessionId);
              session.setAttribute(sessionId, username);
              response.addCookie(cookie);
