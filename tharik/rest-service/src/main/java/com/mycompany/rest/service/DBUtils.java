@@ -13,28 +13,54 @@ import java.util.List;
  * @author hnd
  */
 public class DBUtils {
-    public List<Student> getStudents() {
-        List<Student> students = new ArrayList<>();
+    
+    List<Student> students = new ArrayList<>();
+    
+    public DBUtils() {
         students.add(new Student("ST01", "John", "Smith", "123V"));
-        students.add(new Student("ST02", "George", "Whey", "345V"));
+    }
+    
+    public List<Student> getStudents() {
         return students;
     }
     
     public Student getStudent(String id) {
         //Write the code to read from DB
-        Student st = new Student(id, "John", "Smith", "123V");
-        return st;
+        for(Student st : students) {
+            if (st.getId().equals(id)) {
+                return st;
+            }
+        }
+        return null;
     }
     
     public boolean addStudent(Student st) {
+        students.add(st);
         return true;
     }
     
     public boolean updateStudent(Student st) {
+        students.stream().filter(st2 -> (st2.getId().equals(st.getId()))).map(st2 -> {
+            st2.setFirstName(st.getFirstName());
+            return st2;
+        }).map(st2 -> {
+            st2.setLastName(st.getLastName());
+            return st2;
+        }).forEachOrdered(st2 -> {
+            st2.setNic(st.getNic());
+        });
         return true;
     }
     
     public boolean deleteStudent(String id) {
+        int i = 0;
+        for(Student st : students) {
+            if (st.getId().equals(id)) {
+                students.remove(i);
+                break;
+            }
+            i++;
+        }
         return true;
     }
 }
