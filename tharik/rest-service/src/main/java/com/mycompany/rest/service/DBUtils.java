@@ -14,10 +14,10 @@ import java.util.List;
  */
 public class DBUtils {
     
-    List<Student> students = new ArrayList<>();
+    static List<Student> students = new ArrayList<>();
     
     public DBUtils() {
-        students.add(new Student("ST01", "John", "Smith", "123V"));
+
     }
     
     public List<Student> getStudents() {
