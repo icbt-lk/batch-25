@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Start Page</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>
+        ID : <input type="text" id="txtId"/>
+        <button id="idLoad" onclick="loadStudent()" >Load Student</button>
+        First Name : <input type="text" id="txtFirstName"/>
+        Last Name : <input type="text" id="txtLastName"/>
+        NIC: <input type="text" id="txtNic"/>
+        
+        
+        <script>
+        function loadStudent() {
+            let id = document.getElementById("txtId").value
+            
+            
+            fetch("http://localhost:8080/rest-service/resources/student/" + id)
+            .then((response) => {
+              return response.json();
+            })
+            .then((data) => {
+              let student = data;
+
+              document.getElementById("txtFirstName").value  = student.firstName;
+              document.getElementById("txtLastName").value  = student.lastName;
+              document.getElementById("txtNic").value  = student.nic;
+            });
+        }
+        </script>
+        
+        
+       
+    </body>
+</html>
