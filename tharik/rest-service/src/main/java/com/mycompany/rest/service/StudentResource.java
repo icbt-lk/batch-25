@@ -29,7 +29,7 @@ import javax.ws.rs.core.Response;
 @Path("student")
 @RequestScoped
 public class StudentResource {
-
+    DBUtils utils = new DBUtils();
     @Context
     private UriInfo context;
 
@@ -46,7 +46,6 @@ public class StudentResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public String getStudents() {
-        DBUtils utils = new DBUtils();
         Gson gson = new GsonBuilder().create();
         return gson.toJson(utils.getStudents());
     }
@@ -55,7 +54,6 @@ public class StudentResource {
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public String getStudent(@PathParam("id") String id) {
-        DBUtils utils = new DBUtils();
         Student st = utils.getStudent(id);
         Gson gson = new GsonBuilder().create();
         return gson.toJson(st);
@@ -71,7 +69,7 @@ public class StudentResource {
             return Response.status(Response.Status.BAD_REQUEST).build();
         }
         
-        DBUtils utils = new DBUtils();
+       
         utils.addStudent(st);
         
         return Response.status(Response.Status.CREATED).build();
@@ -86,7 +84,6 @@ public class StudentResource {
         if (st.getId() == null) {
             return Response.status(Response.Status.BAD_REQUEST).build();
         }
-        DBUtils utils = new DBUtils();
         utils.updateStudent(st);
         return Response.status(Response.Status.OK).build();
     }
@@ -94,7 +91,6 @@ public class StudentResource {
     @DELETE
     @Path("/{id}")
     public Response deleteStudent(@PathParam("id") String id)  {
-        DBUtils utils = new DBUtils();
         utils.deleteStudent(id);
         return Response.status(Response.Status.OK).build();
     }
