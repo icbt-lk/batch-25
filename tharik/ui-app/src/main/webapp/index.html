@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Start Page</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>
+        <p>ID : <input type="text" id="txtId"/></p>
+        <button id="idLoad" onclick="loadStudent()" >Load Student</button>
+        <br/>
+        <p>First Name : <input type="text" id="txtFirstName"/></p>
+        <p>Last Name : <input type="text" id="txtLastName"/></p>
+        <p>NIC: <input type="text" id="txtNic"/></p>
+        <br/>
+        <button id="idAdd" onclick="addStudent()" >Add</button>
+        <button id="idUpdate" onclick="updateStudent()" >Update</button>
+        <button id="idClear" onclick="clearStudent()" >Clear</button>
+        <button id="idDelete" onclick="deleteStudent()" >Delete</button>
+        
+        <script>
+        const url = "http://localhost:8080/rest-service/resources/student/";
+        function loadStudent() {
+            let id = document.getElementById("txtId").value
+            fetch(url + id)
+            .then((response) => {
+              return response.json();
+            })
+            .then((data) => {
+              let student = data;
+              if (data !== null) {
+                document.getElementById("txtFirstName").value  = student.firstName;
+                document.getElementById("txtLastName").value  = student.lastName;
+                document.getElementById("txtNic").value  = student.nic;
+              } else {
+                document.getElementById("txtFirstName").value  = "";
+                document.getElementById("txtLastName").value  = "";
+                document.getElementById("txtNic").value  = "";               
+              }
+
+            });
+        }
+        
+        function addStudent() {
+            let student = {
+              id: document.getElementById("txtId").value,
+              firstName: document.getElementById("txtFirstName").value,
+              lastName: document.getElementById("txtLastName").value,
+              nic: document.getElementById("txtNic").value
+            };
+            
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(student)
+            });
+        }
+        
+        function updateStudent() {
+            let student = {
+              id: document.getElementById("txtId").value,
+              firstName: document.getElementById("txtFirstName").value,
+              lastName: document.getElementById("txtLastName").value,
+              nic: document.getElementById("txtNic").value
+            };
+            
+            fetch(url, {
+                method: 'PUT',
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(student)
+            });
+        }
+        
+        function deleteStudent() {
+           let id = document.getElementById("txtId").value;
+            
+            fetch(url + id, {
+                method: 'DELETE',
+                headers: {
+                }
+            });
+        }
+        
+        function clearStudent() {
+                document.getElementById("txtId").value  = "";
+                document.getElementById("txtFirstName").value  = "";
+                document.getElementById("txtLastName").value  = "";
+                document.getElementById("txtNic").value  = "";
+        }
+        </script>
+        
+        
+       
+    </body>
+</html>
