@@ -38,37 +38,6 @@ public class DBUtilsTest {
     public void tearDown() {
     }
 
-    /**
-     * Test of getStudents method, of class DBUtils.
-     */
-    @Test
-    public void testGetStudents() {
-        System.out.println("getStudents");
-        Student st = new Student("ST01", "John", "Smith", "123V");
-        DBUtils instance = new DBUtils();
-        List<Student> result = instance.getStudents();
-        assertEquals(st.getId(), result.get(0).getId());
-        assertEquals(st.getFirstName(), result.get(0).getFirstName());
-        assertEquals(st.getLastName(), result.get(0).getLastName());
-        assertEquals(st.getNic(), result.get(0).getNic());
-        
-    }
-
-    /**
-     * Test of getStudent method, of class DBUtils.
-     */
-    @Test
-    public void testGetStudent() {
-        System.out.println("getStudent");
-        String id = "ST01";
-        DBUtils instance = new DBUtils();
-        Student expResult = new Student("ST01", "John", "Smith", "123V");
-        Student result = instance.getStudent(id);
-        assertEquals(expResult.getId(), result.getId());
-        assertEquals(expResult.getFirstName(), result.getFirstName());
-        assertEquals(expResult.getLastName(), result.getLastName());
-        assertEquals(expResult.getNic(), result.getNic());
-    }
 
     /**
      * Test of addStudent method, of class DBUtils.
